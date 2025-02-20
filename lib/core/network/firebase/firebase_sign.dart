@@ -10,12 +10,12 @@ class FirebaseSign {
     return credential;
   }
 
-  Future<UserCredential> createacountemailandpassword({
+  Future<User> createacountemailandpassword({
     required String email,
     required String password,
   }) async {
     final UserCredential credential = await FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: email, password: password);
-    return credential;
+    return credential.user!;
   }
 }
