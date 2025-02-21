@@ -11,6 +11,18 @@ class Cashhelper {
     sharedPreferences.setString("id", id);
   }
 
+  setlanguage(lang) async {
+    SharedPreferences? sharedPreferences =
+        await SharedPreferences.getInstance();
+    sharedPreferences.setString("lang", lang);
+  }
+
+  setlocation(location) async {
+    SharedPreferences? sharedPreferences =
+        await SharedPreferences.getInstance();
+    sharedPreferences.setString("location", location);
+  }
+
   setuserlogin(login) async {
     SharedPreferences? sharedPreferences =
         await SharedPreferences.getInstance();
@@ -33,6 +45,18 @@ class Cashhelper {
     SharedPreferences? sharedPreferences =
         await SharedPreferences.getInstance();
     return sharedPreferences.getString("id");
+  }
+
+  Future<String?> getlocation() async {
+    SharedPreferences? sharedPreferences =
+        await SharedPreferences.getInstance();
+    return sharedPreferences.getString("location");
+  }
+
+  Future<String?> getlanguage() async {
+    SharedPreferences? sharedPreferences =
+        await SharedPreferences.getInstance();
+    return sharedPreferences.getString("lang");
   }
 
   Future<Map<String, dynamic>> getuserinfo() async {

@@ -9,12 +9,11 @@ abstract class BaseRemoteDataSourceSignUp {
 
 class RemoteSignupemailandPassword extends BaseRemoteDataSourceSignUp {
   @override
-  Future<UserCredential> signup({UsersignupModel? usermodel}) async {
-    UserCredential userc = await sl<FirebaseSign>()
-        .createacountemailandpassword(
-          email: usermodel!.email!,
-          password: usermodel.password!,
-        );
+  Future<User> signup({UsersignupModel? usermodel}) async {
+    User userc = await sl<FirebaseSign>().createacountemailandpassword(
+      email: usermodel!.email!,
+      password: usermodel.password!,
+    );
     return userc;
   }
 }

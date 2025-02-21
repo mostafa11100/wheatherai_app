@@ -38,4 +38,8 @@ class AppStrings {
   static String weight = "WEIGHT";
   static String kg = "KG";
   static String loading = "Loading...";
+
+  static String hello = "Hello";
+  static String successacount =
+      "Acount has been created successfully ,please go to sign in";
 }

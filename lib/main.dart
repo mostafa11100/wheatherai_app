@@ -28,6 +28,7 @@ class WheatherApp extends StatelessWidget {
       // Use builder only if you need to use library outside ScreenUtilInit context
       builder: (_, child) {
         return MaterialApp.router(
+          debugShowCheckedModeBanner: false,
           darkTheme: Thems.darktheme(),
           theme: Thems.lighttheme(),
           themeMode: ThemeMode.dark,

@@ -43,14 +43,26 @@ dependencies:
   firebase_auth: ^5.4.2
   either_dart: ^1.0.0
   shared_preferences: ^2.5.2
+  geolocator: ^13.0.2
+  awesome_bottom_bar: ^1.2.4
+  date_picker_timeline: ^1.2.6
   flutter_localizations:
     sdk: flutter
   firebase_core: ^3.11.0
   dartz: ^0.10.1
   cloud_firestore: ^5.6.3
+  easy_date_timeline: ^2.0.6
+  flutter_semi_circle: ^1.0.0
+  pie_chart: ^5.4.0
+  fl_chart: ^0.70.2
+  dio: ^5.8.0+1
+  awesome_dialog: ^3.2.1
+  equatable: ^2.0.7
   
 
 dev_dependencies:
+  build_runner: ^2.4.15
+  mockito: ^5.4.5
   flutter_test:
     sdk: flutter
 
@@ -93,7 +105,8 @@ flutter:
       fonts:
         - asset: assets/fonts/Prompt-Regular.ttf
         - asset: assets/fonts/Prompt-ExtraLight.ttf
-        - asset: assets/fonts/Prompt-ExtraBold.ttf
+        - asset: assets/fonts/Prompt-Bold.ttf
+        
   
   #         style: italic
   #   - family: Trajan Pro

@@ -3,10 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wheater_app/core/utilis/app_colors.dart';
 import 'package:wheater_app/core/utilis/app_strings.dart';
 import 'package:wheater_app/core/utilis/textstyle_const.dart';
+import 'package:awesome_dialog/awesome_dialog.dart';
 
 showloadingdialog(context) {
   showDialog(
     barrierDismissible: false,
+
     context: context,
     builder: (context) {
       return Center(
@@ -30,4 +32,16 @@ showloadingdialog(context) {
       );
     },
   );
+}
+
+showsuccess(ok, context, message) {
+  AwesomeDialog(
+    context: context,
+    dialogType: DialogType.noHeader,
+    animType: AnimType.rightSlide,
+    title: "Success",
+    desc: message,
+
+    btnOkOnPress: ok,
+  ).show();
 }
