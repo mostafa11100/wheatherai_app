@@ -1,16 +1,30 @@
-# wheater_app
+# Weather App  
 
-A new Flutter project.
+## Project Structure  
+This project follows **Clean Architecture** and the **MVVM (Model-View-ViewModel)** pattern. Here’s a quick overview of the structure:  
 
-## Getting Started
+### lib  
+- **data**: Manages data retrieval, storage, and APIs.  
+- **domain**: Contains business logic and entity models.  
+- **presentation**: Handles UI and state management.  
 
-This project is a starting point for a Flutter application.
+### Data Layer  
+Responsible for data management, including:  
+- **Repositories**: Interfaces for data access.  
+- **Data Sources**: Concrete implementations for data access (e.g., APIs, local databases).  
+- **Models**: Data models for serialization and deserialization.  
 
-A few resources to get you started if this is your first Flutter project:
+### Domain Layer  
+Encapsulates business logic, including:  
+- **Use Cases**: Classes that represent application-specific business rules.  
+- **Entities**: Core objects used across the application.  
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Presentation Layer  
+Handles UI and state management, including:  
+- **View Models**: Manage UI-related data and handle user interaction.  
+- **Widgets**: Flutter widgets for rendering the user interface.  
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Features  
+- **Authentication**: User login and registration using Firebase.  
+- **Weather Data**: Fetches real-time weather data using an API.  
+- **State Management**: Implemented using a Flutter state management solution (Bloc, Cubit).  
