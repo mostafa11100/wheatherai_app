@@ -14,13 +14,13 @@ class SignUpReboEmailAndPassword extends BaseSignUpRebo {
   @override
   Future<Either<Failure, Unit>> signup({SignUpEntity? signupentity}) async {
     try {
-      UserCredential result = await _remoteDataSourceSignUp.signup(
+      User result = await _remoteDataSourceSignUp.signup(
         usermodel: UsersignupModel(
           email: signupentity!.email!,
           password: signupentity.password,
         ),
       );
-      String uid = result.user!.uid;
+      String uid = result.uid;
       sl<Cashhelper>().setuserid(uid);
       return Right(unit);
     } on FirebaseException catch (e) {
