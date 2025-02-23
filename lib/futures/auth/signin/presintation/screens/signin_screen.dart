@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:wheater_app/core/approuters/app_routs.dart';
 import 'package:wheater_app/core/component/buttons/simple_button.dart';
 import 'package:wheater_app/core/component/dialog/loading.dart';
 import 'package:wheater_app/core/component/textfeild/simple_textfeld.dart';
@@ -46,7 +47,7 @@ class _SigninScreenState extends State<SigninScreen> {
           if (state is SigninSucces) {
             context.pop();
 
-            //GoRouter.of(context).push(AppRoutes.home)
+            GoRouter.of(context).pushReplacement(AppRouts.app);
           } else if (state is SigninFailure) {
             context.pop();
             ScaffoldMessenger.of(context).showSnackBar(
