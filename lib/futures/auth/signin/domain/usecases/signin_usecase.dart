@@ -4,7 +4,7 @@ import 'package:wheater_app/futures/auth/signin/domain/entity/usersignin_entity.
 import 'package:wheater_app/futures/auth/signin/domain/repo_interfaces/interface_signin_rebo.dart';
 
 class SigninUsecase {
-  InterfaceSigninRebo _signinRebo;
+  final InterfaceSigninRebo _signinRebo;
   SigninUsecase(this._signinRebo);
   Future<Either<Unit, Failure>> signin(UsersigninEntity entity) async {
     try {

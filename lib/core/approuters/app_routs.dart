@@ -6,6 +6,7 @@ import 'package:wheater_app/futures/auth/signin/presintation/controller/cubit/si
 import 'package:wheater_app/futures/auth/signin/presintation/screens/signin_screen.dart';
 import 'package:wheater_app/futures/auth/signup/presination/controller/cubit/sign_up_cubit.dart';
 import 'package:wheater_app/futures/auth/signup/presination/screens/signup_screen.dart';
+import 'package:wheater_app/futures/home/navigation_app_bar/navigation_bar_screen.dart';
 import 'package:wheater_app/futures/onbordingscreens/loginorSign_upscreen.dart';
 import 'package:wheater_app/futures/onbordingscreens/onbording.dart';
 
@@ -19,7 +20,7 @@ class AppRouts {
   static String signup = "/signup";
   static String loginorsignup = "/loginorsignup";
 
-  static String home = "/home";
+  static String app = "/app";
   final getit = GetIt.instance;
   static GoRouter routs = GoRouter(
     routes: [
@@ -53,6 +54,12 @@ class AppRouts {
             create: (context) => sl<SignUpCubit>(),
             child: SignupScreen(),
           );
+        },
+      ),
+      GoRoute(
+        path: app,
+        builder: (context, s) {
+          return NavigationBarAppScreen();
         },
       ),
     ],
