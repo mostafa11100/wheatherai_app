@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:wheater_app/core/utilis/app_colors.dart';
 import 'package:wheater_app/core/utilis/app_strings.dart';
 import 'package:wheater_app/core/utilis/textstyle_const.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 
-showloadingdialog(context) {
+showloadingdialog(BuildContext context) {
+  Future.delayed(Duration(milliseconds: 600), () {
+    context.pop();
+  });
   showDialog(
     barrierDismissible: false,
 

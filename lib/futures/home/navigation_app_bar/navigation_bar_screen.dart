@@ -13,25 +13,26 @@ class NavigationBarAppScreen extends StatelessWidget {
     return Scaffold(
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: CustomNavigationBar(),
-      body: Container(
-        padding: EdgeInsets.only(top: 40.h, left: 20.w, right: 20.w),
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [AppColors.colorwhitetransparnt, Colors.transparent],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
+      body: SingleChildScrollView(
+        child: Container(
+          padding: EdgeInsets.only(top: 40.h, left: 20.w, right: 20.w),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [AppColors.colorwhitetransparnt, Colors.transparent],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
           ),
-        ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              customappBar(name: "Mostafa Salem", context: context),
+              SizedBox(height: 10.h),
 
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            customappBar(name: "Mostafa Salem", context: context),
-            SizedBox(height: 10.h),
-
-            HomeScreen(),
-          ],
+              HomeScreen(),
+            ],
+          ),
         ),
       ),
     );

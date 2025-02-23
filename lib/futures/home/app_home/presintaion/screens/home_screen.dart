@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
             showloadingdialog(context);
           }
           if (state is GetWeatherSuccess) {
-            context.canPop() ? context.pop() : null;
+            //    context.canPop() ? context.pop() : null;
             h = state.entity.humidity;
             t = state.entity.temperature;
             s = state.entity.windSpeed;
@@ -58,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
             v = state.entity.visibility;
           }
           if (state is GetWeatherFail) {
-            context.pop();
+            //context.pop();
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(

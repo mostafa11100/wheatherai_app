@@ -7,6 +7,5 @@ class UsersigninEntity extends Equatable {
   UsersigninEntity(this.email, this.password);
 
   @override
-  // TODO: implement props
   List<Object?> get props => [email, password];
 }

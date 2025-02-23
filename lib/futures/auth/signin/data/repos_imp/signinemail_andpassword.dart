@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:get_it/get_it.dart';
 import 'package:dartz/dartz.dart';
 import 'package:wheater_app/core/di/service_locator.dart';
 import 'package:wheater_app/core/error/falure.dart';

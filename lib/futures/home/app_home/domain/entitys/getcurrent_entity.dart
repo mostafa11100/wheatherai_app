@@ -1,4 +1,6 @@
-class GetCurrentEntity {
+import 'package:equatable/equatable.dart';
+
+class GetCurrentEntity extends Equatable {
   final String cityName;
   final double temperature;
   final String conditionText;
@@ -20,4 +22,17 @@ class GetCurrentEntity {
     required this.visibility,
     required this.lastUpdated,
   });
+
+  @override
+  List<Object?> get props => [
+    cityName,
+    conditionIcon,
+    conditionText,
+    temperature,
+    windSpeed,
+    humidity,
+    cloudiness,
+    visibility,
+    lastUpdated,
+  ];
 }
