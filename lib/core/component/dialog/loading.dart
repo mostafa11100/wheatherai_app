@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
@@ -7,8 +9,13 @@ import 'package:wheater_app/core/utilis/textstyle_const.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 
 showloadingdialog(BuildContext context) {
-  Future.delayed(Duration(milliseconds: 600), () {
-    context.pop();
+  Future.delayed(Duration(milliseconds: 3000), () {
+    Future.delayed(Duration(seconds: 2), () {
+      if (context.mounted) {
+        // ✅ التحقق إذا كان العنصر ما زال موجودًا
+        GoRouter.of(context).pop();
+      }
+    });
   });
   showDialog(
     barrierDismissible: false,

@@ -10,6 +10,7 @@ class GetCurrentEntity extends Equatable {
   final int cloudiness;
   final double visibility;
   final String lastUpdated;
+  bool? goout = false;
 
   GetCurrentEntity({
     required this.cityName,

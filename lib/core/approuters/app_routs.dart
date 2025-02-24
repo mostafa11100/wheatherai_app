@@ -6,6 +6,7 @@ import 'package:wheater_app/futures/auth/signin/presintation/controller/cubit/si
 import 'package:wheater_app/futures/auth/signin/presintation/screens/signin_screen.dart';
 import 'package:wheater_app/futures/auth/signup/presination/controller/cubit/sign_up_cubit.dart';
 import 'package:wheater_app/futures/auth/signup/presination/screens/signup_screen.dart';
+import 'package:wheater_app/futures/home/app_home/presintaion/controller/cubit/get_weather_cubit.dart';
 import 'package:wheater_app/futures/home/navigation_app_bar/navigation_bar_screen.dart';
 import 'package:wheater_app/futures/onbordingscreens/loginorSign_upscreen.dart';
 import 'package:wheater_app/futures/onbordingscreens/onbording.dart';
@@ -59,7 +60,10 @@ class AppRouts {
       GoRoute(
         path: app,
         builder: (context, s) {
-          return NavigationBarAppScreen();
+          return BlocProvider(
+            create: (context) => sl<GetWeatherCubit>()..get(days: 1),
+            child: NavigationBarAppScreen(),
+          );
         },
       ),
     ],

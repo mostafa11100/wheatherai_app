@@ -2,13 +2,20 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:wheater_app/core/approuters/app_routs.dart';
+import 'package:wheater_app/core/component/notfications/weather_state_ntfc.dart';
 import 'package:wheater_app/core/di/service_locator.dart';
+import 'package:wheater_app/core/helper/app_lifecycle.dart';
+import 'package:wheater_app/core/services/work_manager.dart';
+import 'package:wheater_app/core/utilis/functions.dart';
 import 'package:wheater_app/core/utilis/thems.dart';
 import 'package:wheater_app/firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setupLocator();
+  sl<LocalNotfications>().init();
+  sl<WorkManagerApp>().init();
+  sl<AppLifecycleObserver>().start();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const WheatherApp());
 }
@@ -25,7 +32,6 @@ class WheatherApp extends StatelessWidget {
       ),
       minTextAdapt: true,
       splitScreenMode: true,
-      // Use builder only if you need to use library outside ScreenUtilInit context
       builder: (_, child) {
         return MaterialApp.router(
           debugShowCheckedModeBanner: false,
