@@ -108,6 +108,37 @@ class Failure {
         break;
     }
   }
+  Failure.handleGeminiError(int statusCode) {
+    switch (statusCode) {
+      case 400:
+        error = "There was an issue with your request. Please try again.";
+        break;
+      case 403:
+        error =
+            "You don’t have permission to use this feature. Please check your settings.";
+        break;
+      case 404:
+        error =
+            "The requested resource was not found. Please check your input.";
+        break;
+      case 429:
+        error = "Too many requests sent. Please try again later.";
+        break;
+      case 500:
+        error = "An unexpected error occurred. Please try again later.";
+        break;
+      case 503:
+        error =
+            "The service is temporarily unavailable. Please wait and try again later.";
+        break;
+      case 504:
+        error =
+            "The request took too long to process. Try reducing the data size or retrying later.";
+        break;
+      default:
+        error = "An unexpected error occurred. Please try again later.";
+    }
+  }
 
   Failure.netwrkerror() {
     error = "Netwrk connection feild";

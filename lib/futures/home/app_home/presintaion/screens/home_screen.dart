@@ -2,9 +2,9 @@ import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
+
 import 'package:wheater_app/core/component/dialog/loading.dart';
-import 'package:wheater_app/core/di/service_locator.dart';
+import 'package:wheater_app/core/component/toast/toast.dart';
 import 'package:wheater_app/core/utilis/app_colors.dart';
 import 'package:wheater_app/core/utilis/textstyle_const.dart';
 import 'package:wheater_app/futures/home/app_home/presintaion/controller/cubit/get_weather_cubit.dart';
@@ -42,76 +42,72 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => sl<GetWeatherCubit>()..get(days: 1),
-      child: BlocConsumer<GetWeatherCubit, GetWeatherState>(
-        listener: (context, state) {
-          if (state is GetWeatherLoading) {
-            showloadingdialog(context);
-          }
-          if (state is GetWeatherSuccess) {
-            //    context.canPop() ? context.pop() : null;
-            h = state.entity.humidity;
-            t = state.entity.temperature;
-            s = state.entity.windSpeed;
+    return BlocConsumer<GetWeatherCubit, GetWeatherState>(
+      listener: (context, state) {
+        if (state is GetWeatherLoading) {
+          showloadingdialog(context);
+        }
+        if (state is GetWeatherSuccess) {
+          showWeatherToast(state.entity.goout!);
+          h = state.entity.humidity;
+          t = state.entity.temperature;
+          s = state.entity.windSpeed;
 
-            v = state.entity.visibility;
-          }
-          if (state is GetWeatherFail) {
-            //context.pop();
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(
-                  state.eror,
-                  style: TextstyleConst.texts15.copyWith(
-                    color: AppColors.colorwhite,
-                  ),
+          v = state.entity.visibility;
+        }
+        if (state is GetWeatherFail) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                state.eror,
+                style: TextstyleConst.texts15.copyWith(
+                  color: AppColors.colorwhite,
                 ),
-                backgroundColor: Colors.red,
-                duration: Duration(seconds: 3),
+              ),
+              backgroundColor: Colors.red,
+              duration: Duration(seconds: 3),
+            ),
+          );
+        }
+      },
+      builder: (context, state) {
+        return BlocBuilder<GetWeatherCubit, GetWeatherState>(
+          builder: (context, state) {
+            return SizedBox(
+              child: Column(
+                children: [
+                  SizedBox(
+                    //   height: 200,
+                    width: MediaQuery.of(context).size.width,
+                    child: DateCustomWidget(
+                      controller: controler!,
+                      onchanged: (datetime) {
+                        int days = datetime.day - DateTime.now().day;
+
+                        GetWeatherCubit.blocprovider(
+                          context,
+                        ).get(days: days == 0 ? 1 : days + 1);
+                      },
+                    ),
+                  ),
+
+                  //SizedBox(height: 5.h),
+                  charpie_half(context, t),
+                  SizedBox(height: 10.h),
+                  piecharts(
+                    context,
+                    PieChartModel(s, s),
+                    PieChartModel(h.toDouble(), h.toDouble()),
+                    PieChartModel(v.toDouble(), v.toDouble()),
+                  ),
+                  SizedBox(height: 20.h),
+                  linechart(context),
+                ],
               ),
             );
-          }
-        },
-        builder: (context, state) {
-          return BlocBuilder<GetWeatherCubit, GetWeatherState>(
-            builder: (context, state) {
-              return SizedBox(
-                child: Column(
-                  children: [
-                    SizedBox(
-                      //   height: 200,
-                      width: MediaQuery.of(context).size.width,
-                      child: DateCustomWidget(
-                        controller: controler!,
-                        onchanged: (datetime) {
-                          int days = datetime.day - DateTime.now().day;
-
-                          GetWeatherCubit.blocprovider(
-                            context,
-                          ).get(days: days == 0 ? 1 : days + 1);
-                        },
-                      ),
-                    ),
-
-                    //SizedBox(height: 5.h),
-                    charpie_half(context, t),
-                    SizedBox(height: 10.h),
-                    piecharts(
-                      context,
-                      PieChartModel(s, s),
-                      PieChartModel(h.toDouble(), h.toDouble()),
-                      PieChartModel(v.toDouble(), v.toDouble()),
-                    ),
-                    SizedBox(height: 20.h),
-                    linechart(context),
-                  ],
-                ),
-              );
-            },
-          );
-        },
-      ),
+          },
+        );
+      },
     );
   }
 }

@@ -10,12 +10,17 @@
 .history
 .svn/
 .swiftpm/
+
 migrate_working_dir/
 
 # IntelliJ related
 *.iml
 *.ipr
 *.iws
+*.apk
+*.aab
+*.bin
+*.dex
 .idea/
 
 # The .vscode folder contains launch configuration and tasks you configure in
@@ -43,3 +48,8 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+/android/app/build/
+/android/app/outputs/
+/android/.gradle/
+/android/app/build/outputs/apk/
+/android/app/google-services.json
